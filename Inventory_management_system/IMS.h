@@ -52,5 +52,26 @@ void destoryInventory(Inventory_t *inventory);
 void destorySalesRecords(SalesRecord_t *head);
 char *getCurrentDateTime();
 int addProduct(Inventory_t* Inventory, const char *name,const char *category, double price, int quantuty, const char* supplier);
+int updateProduct(Inventory_t* Inventory, int id, const char *name, const char *category, double price, int quantuty, const char* supplier);
+int deleteProduct(Inventory_t* Inventory, int id);
+Product_t *findProductById(const Inventory_t* Inventory, int id);
+Product_t *findProductByName(const Inventory_t* Inventory, const char *name);
+Product_t *findProductByCategory(const Inventory_t *Inventory, const char *category, int *result_count);
+int sellProduct(Inventory_t *Inventory, int product_id, int quantity, SalesRecord_t** sales_head);
+int restockProduct(Inventory_t *Inventory, int product_id, int quantity);
+double calculateInventoryValue(const Inventory_t* inventory);
+CategoryStats_t* getCategoryStats(const Inventory_t* inventory, int* stats_count);
+void generateInventoryReport(const Inventory_t* inventory, const char* filename);
+void generateSalesReport(const SalesRecord_t* sales_head, const char* filename);
+SalesRecord_t* filterSalesByDate(const SalesRecord_t* head, const char* start_date, const char* end_date);
+void sortProductsByPrice(Inventory_t* inventory, int ascending);
+void sortProductsByQuantity(Inventory_t* inventory, int ascending);
+int saveInventoryToFile(const Inventory_t* inventory, const char* filename);
+int loadInventoryFromFile(Inventory_t* inventory, const char* filename);
+int saveSalesToFile(const SalesRecord_t* head, const char* filename);
+SalesRecord_t* loadSalesFromFile(const char* filename);
+void displayProduct(const Product_t* product);
+void displayInventory(const Inventory_t* inventory);
+void displaySalesRecords(const SalesRecord_t* head);
 
 #endif
